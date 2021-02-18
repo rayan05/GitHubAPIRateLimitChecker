@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "APIRateLimitChecker": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
