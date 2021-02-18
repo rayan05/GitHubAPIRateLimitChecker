@@ -12,19 +12,23 @@ namespace APIRateLimitChecker
         static readonly string baseUrl = "https://api.github.com";
         static readonly decimal percentage = 10;
 
-        static async Task Main(string[] args)
+        static async Task Main()
         {
             Console.WriteLine(string.Format("This Apllication checks Github API's rate limit. If the available rate is less than {0}%, it will print 1. else 0 ", percentage));
             Console.Write("Please Enter the Github Personal Access Token (PAT): ");
             token = Console.ReadLine();
+
             await APIRateLimitCheckAsync();
+
             Console.ReadLine();
         }
 
         public static async Task APIRateLimitCheckAsync()
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(baseUrl);
+            HttpClient client = new HttpClient
+            {
+                BaseAddress = new Uri(baseUrl)
+            };
 
             client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("AppName", "1.0"));
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -39,7 +43,7 @@ namespace APIRateLimitChecker
             }
             else
             {
-                //Error occured. Cannot calculate teh available rate.
+                //Error occured. Cannot calculate the available rate.
                 Console.WriteLine("-1");
             }
         }
@@ -55,6 +59,7 @@ namespace APIRateLimitChecker
         public static async Task<dynamic> ExecuteAPICallAsync(HttpClient client)
         {
             dynamic rate = null; 
+
             try
             {
                 var response = await client.GetAsync("/rate_limit");
@@ -62,7 +67,6 @@ namespace APIRateLimitChecker
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     var contents = await response.Content.ReadAsStringAsync();
-
                     var result = JsonConvert.DeserializeObject<dynamic>(contents);
                     rate = result.rate;
                 }
