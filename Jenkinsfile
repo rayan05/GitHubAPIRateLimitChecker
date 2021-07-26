@@ -1,7 +1,21 @@
-def img = 'mcr.microsoft.com/dotnet/sdk:5.0-buster-slim'
-
-buildDockerImage(
-    images: [
-        [agentLabel: 'linux', dockerfile: img]
-    ]
-)
+pipeline {
+  agent any
+  environment {
+    registryName = 'TempTestCICD'
+    registryCredential  = 'ACR'
+    dockerImage = ''
+    registryUrl = 'temptestcicd.azurecr.io'
+  }
+  stages {
+    stage('publish docker') {
+      steps{
+        script{
+            docker.withRegistry("http://${registryUrl}", registryCredential) {
+                def   dockerImage = docker.build("temptestcicd.azurecr.io/APIRateLimitChecker:latest")
+                dockerImage.push 'latest'
+            }
+        }
+      }
+    }
+  }
+}
