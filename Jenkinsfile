@@ -1,5 +1,5 @@
 pipeline {
-  agent { dockerfile true }
+  agent { label 'linux' }
   environment {
     registryName = 'TempTestCICD'
     registryCredential  = 'ACR'
