@@ -11,7 +11,7 @@ pipeline {
       steps{
         script{
             docker.withRegistry("http://${registryUrl}", registryCredential) {
-                def   dockerImage = docker.build("temptestcicd.azurecr.io/apiratelimitchecker:latest")
+                def   dockerImage = docker.build("temptestcicd.azurecr.io/apiratechecker-image:latest")
                 dockerImage.push 'latest'
             }
         }
