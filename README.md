@@ -4,7 +4,7 @@ This application checks GitHub's API rate limit is in safe limit. For the given 
 If any error occured this will return -1
 
 
-This abblication will build & run on Linux based docker containers
+This application will build & run on Linux based docker containers
 
 ## How to run this apllication
 
