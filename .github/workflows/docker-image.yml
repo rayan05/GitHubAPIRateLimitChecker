@@ -14,5 +14,5 @@ jobs:
     - name: Build the Docker image
       run: docker build -t apiratechecker-image -f Dockerfile .
     - name: Run the Docker container
-      run: docker-compose exec -T apiratechecker-image
+      run: docker-compose exec apiratechecker-image
         
