@@ -13,3 +13,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build -t apiratechecker-image -f Dockerfile .
+    - name: Run docker container
+      run: docker run -it --rm apiratechecker-image
