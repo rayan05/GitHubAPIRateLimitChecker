@@ -14,5 +14,7 @@ jobs:
     - name: Build the Docker image
       run: docker build -t apiratechecker-image -f Dockerfile .
     - name: Run the Docker container
+      run: cd /home/runner/work/GitHubAPIRateLimitChecker/GitHubAPIRateLimitChecker
+    - name: xx  
       run: dotnet run
       
