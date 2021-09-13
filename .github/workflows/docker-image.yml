@@ -14,5 +14,5 @@ jobs:
     - name: Build the Docker image
       run: docker build -t apiratechecker-image -f Dockerfile .
     - name: Run the Docker container
-      run: CMD ["APIRateLimitChecker.exe"]
+      run: docker run -it apiratechecker-image
       
