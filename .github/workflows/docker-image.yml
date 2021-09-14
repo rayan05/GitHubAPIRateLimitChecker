@@ -12,5 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: | 
+        cd app/publish
         script -q -e -c "APIRateLimitChecker.dll"
       
