@@ -11,10 +11,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build -t apiratechecker-image -f Dockerfile .
-    - name: Run the Docker container
-      run: docker run --name accon apiratechecker-image
-    - name: xxx
-      run: winpty docker exec -it accon bash
-        
+    - run: | 
+        script -q -e -c "bash {0}"
+      
