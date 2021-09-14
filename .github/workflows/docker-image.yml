@@ -16,5 +16,5 @@ jobs:
     - name: Run the Docker container
       run: docker run --name accon apiratechecker-image
     - name: xxx
-      run: cmd docker exec -it accon bash
+      run: winpty docker exec -it accon bash
         
