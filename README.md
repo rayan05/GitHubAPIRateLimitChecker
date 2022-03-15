@@ -16,5 +16,7 @@ This application will build & run on Linux based docker containers
 
 
 ## prerequisite
-Need to have docker desktop installed in your computer.
+Need to have docker desktop installed in your computer. 
+
+bla bla
 
